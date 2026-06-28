@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детейлинг-центр — Премиальный уход за вашим автомобилем</title>
+    <meta name="description" content="Профессиональный детейлинг в Москве. Полировка кузова, нанесение керамики 9H, глубокая химчистка салона и оклейка защитными пленками. Запись онлайн.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🏎️</span>
+                <span class="logo-text"><strong>DETAILED</strong>.PRO</span>
+            </a>
+            <nav class="nav" aria-label="Основная навигация">
+                <a href="#services">Услуги</a>
+                <a href="#compare">До/После</a>
+                <a href="#booking">Запись на детейлинг</a>
+            </nav>
+            <a href="#booking" class="cta-btn-header">Записаться</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-info">
+                    <span class="badge">Премиум детейлинг студия</span>
+                    <h1>Вернем вашему <br>автомобилю блеск автосалона</h1>
+                    <p class="hero-desc">Профессиональное восстановление и защита лакокрасочного покрытия. Используем премиальные кварцевые составы, даем гарантию на работу и бережно относимся к каждой детали.</p>
+                    
+                    <div class="features-mini">
+                        <div class="feat-mini-item">
+                            <span class="feat-icon">💎</span>
+                            <span>Керамика Gyeon & Koch</span>
+                        </div>
+                        <div class="feat-mini-item">
+                            <span class="feat-icon">🛡️</span>
+                            <span>Гарантия до 3-х лет</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="calc-card" id="booking">
+                    <h2>Онлайн-запись в студию</h2>
+                    
+                    <form class="calc-form" id="detailingForm">
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="userName" class="group-title">Ваше имя</label>
+                            <input type="text" id="userName" name="name" placeholder="Имя владельца" required class="text-input">
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="form-group">
+                            <label for="userContact" class="group-title">Контактный телефон / Telegram</label>
+                            <input type="text" id="userContact" name="contact" placeholder="+7... или @username" required class="text-input">
+                        </div>
+
+                        <!-- Car Model -->
+                        <div class="form-group">
+                            <label class="group-title">Марка и модель автомобиля</label>
+                            <input type="text" name="car_model" placeholder="Например: BMW M5 или Geely Monjaro" required class="text-input">
+                        </div>
+
+                        <!-- Service Select -->
+                        <div class="form-group">
+                            <label for="serviceType" class="group-title">Выберите услугу</label>
+                            <select id="serviceType" name="service" class="select-input">
+                                <option value="polishing">Детейлинг-полировка кузова</option>
+                                <option value="ceramic">Нанесение керамики 9H (2+1 слоя)</option>
+                                <option value="interior">Глубокая химчистка салона</option>
+                                <option value="ppf">Оклейка антигравийной полиуретановой пленкой</option>
+                                <option value="complex">Комплексный детейлинг (полировка + керамика)</option>
+                            </select>
+                        </div>
+
+                        <!-- Date/Time -->
+                        <div class="form-group">
+                            <label class="group-title">Желаемая дата визита</label>
+                            <div class="input-row">
+                                <input type="date" name="date" required class="text-input">
+                                <select name="time" class="select-input">
+                                    <option value="09:00">09:00 (утро)</option>
+                                    <option value="13:00">13:00 (день)</option>
+                                    <option value="17:00">17:00 (вечер)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Agreement Checkbox -->
+                        <div class="form-agreement">
+                            <input type="checkbox" id="agree" name="agreement" required>
+                            <label for="agree">
+                                Я даю <a href="privacy.html" target="_blank">согласие на обработку персональных данных</a> на условиях политики конфиденциальности.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Записаться на разбор автомобиля</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before/After Slider Section -->
+        <section class="compare-section" id="compare">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Результаты нашей работы</h2>
+                    <p>Потяните слайдер по центру, чтобы оценить состояние кузова до полировки и после нанесения защитного состава.</p>
+                </div>
+                
+                <div class="slider-wrapper">
+                    <!-- Before/After Container -->
+                    <div class="before-after-container" id="sliderContainer">
+                        <!-- Before Image (Base) -->
+                        <div class="image-box before-image">
+                            <div class="mock-car-bg before-bg">
+                                <div class="car-label before-label">До детейлинга</div>
+                            </div>
+                        </div>
+                        
+                        <!-- After Image (Overlay) -->
+                        <div class="image-box after-image" id="afterImage">
+                            <div class="mock-car-bg after-bg">
+                                <div class="car-label after-label">После детейлинга</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Handle -->
+                        <div class="slider-handle" id="sliderHandle">
+                            <div class="handle-line"></div>
+                            <div class="handle-button">↔</div>
+                            <div class="handle-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Grid Section -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Детейлинг услуги премиум-класса</h2>
+                    <p>Мы используем только сертифицированную автохимию из Германии, Японии и Кореи.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="srv-icon">✨</span>
+                        <h3>Детейлинг-полировка</h3>
+                        <p>Бережное устранение до 95% царапин, паутины и помутнений лака без истончения ЛКП.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="srv-icon">💎</span>
+                        <h3>Керамика 9H</h3>
+                        <p>Создание гидрофобного панциря. Защита от реагентов, выгорания, птичьего помета и глубокий зеркальный блеск.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="srv-icon">🧼</span>
+                        <h3>Химчистка салона</h3>
+                        <p>Полная разборка, очистка паром, гипоаллергенные составы Koch Chemie и консервация кожи кремом.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="srv-icon">🛡️</span>
+                        <h3>Бронепленка (PPF)</h3>
+                        <p>Оклейка зон риска или кузова целиком полиуретаном SunTek / Stek. Надежная защита от сколов и гравия.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <span class="logo-icon">🏎️</span>
+                <span><strong>DETAILED</strong>.PRO</span>
+            </div>
+            <p class="footer-copy">&copy; 2026 DETAILED.PRO. Все права защищены. Разработано в рамках портфолио DenVolodins.</p>
+            <a href="privacy.html" class="footer-link" target="_blank">Политика конфиденциальности</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
