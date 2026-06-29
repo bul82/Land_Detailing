@@ -53,6 +53,15 @@ def deploy():
             remote_path = f"{remote_release_dir}/{f}"
             print(f"Uploading: {f} -> {remote_path}")
             sftp.put(local_path, remote_path)
+        run_command_over_ssh(ssh, f"mkdir -p {remote_release_dir}/assets/images")
+        local_images = os.path.join(LOCAL_DIR, "assets", "images")
+        if os.path.exists(local_images):
+            for f in os.listdir(local_images):
+                if f.endswith((".jpg", ".png", ".webp", ".avif")):
+                    local_path = os.path.join(local_images, f)
+                    remote_path = f"{remote_release_dir}/assets/images/{f}"
+                    print(f"Uploading image asset: assets/images/{f}")
+                    sftp.put(local_path, remote_path)
         sftp.close()
         print("All files uploaded successfully!")
     except Exception as e:

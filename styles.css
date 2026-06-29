@@ -171,6 +171,23 @@ h1 {
     font-size: 1.5rem;
 }
 
+.hero-photo {
+    margin-top: 2rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(0, 242, 254, 0.14);
+    box-shadow: var(--shadow);
+    background: var(--bg-card);
+}
+
+.hero-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+}
+
 /* Form Card */
 .calc-card {
     background: var(--bg-card);
@@ -338,9 +355,9 @@ h1 {
 
 /* Styled CSS representations of the car states (Dirty vs Super Shiny) */
 .before-bg {
-    background: linear-gradient(rgba(10, 11, 16, 0.65), rgba(10, 11, 16, 0.65)), 
-                radial-gradient(circle at 30% 20%, #7c8594 10%, #2b303c 90%);
-    background-blend-mode: multiply;
+    background:
+        linear-gradient(rgba(10, 11, 16, 0.62), rgba(10, 11, 16, 0.62)),
+        url("assets/images/detailing-premium-hero.jpg") center / cover;
 }
 
 .before-bg::after {
@@ -356,18 +373,17 @@ h1 {
 }
 
 .after-bg {
-    background: linear-gradient(rgba(0, 242, 254, 0.15), rgba(0, 0, 0, 0.4)), 
-                radial-gradient(circle at 30% 20%, #00f2fe 5%, #050b1a 80%);
+    background:
+        linear-gradient(rgba(0, 242, 254, 0.08), rgba(0, 0, 0, 0.12)),
+        url("assets/images/detailing-premium-hero.jpg") center / cover;
 }
 
 .after-bg::after {
-    content: "✨";
+    content: "";
     position: absolute;
-    top: 25%;
-    left: 40%;
-    font-size: 5rem;
-    opacity: 0.85;
-    filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.8));
+    inset: 0;
+    background: linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, 0.32) 49%, transparent 57% 100%);
+    opacity: 0.65;
     animation: pulse-glow 2s infinite alternate;
 }
 
