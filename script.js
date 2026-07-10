@@ -64,6 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Form Submission Logic
     const form = document.getElementById("detailingForm");
     const submitBtn = form.querySelector(".submit-btn");
+    const visitDateInput = form.date;
+    const today = new Date();
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    visitDateInput.min = today.toISOString().slice(0, 10);
+
+    function isValidText(value, maxLength) {
+        return value.length > 0 && value.length <= maxLength;
+    }
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -75,6 +83,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
         const date = form.date.value;
         const time = form.time.value;
+
+        if (!isValidText(name, 60) || !isValidText(contact, 80) || !isValidText(carModel, 80)) {
+            alert("Проверьте имя, контакт и модель автомобиля: поля не должны быть пустыми или слишком длинными.");
+            return;
+        }
+
+        if (!date || date < visitDateInput.min) {
+            alert("Выберите актуальную дату визита.");
+            return;
+        }
 
         const message = 
             `Запись на детейлинг:\n` +
@@ -103,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return res.json();
         })
         .then(data => {
-            alert(`Спасибо, ${name}! Заявка на детейлинг успешно отправлена. Мастер свяжется с вами в течение 10 минут для подтверждения времени визита.`);
+            alert(`Спасибо, ${name}! Заявка на детейлинг отправлена. Мастер свяжется с вами, чтобы уточнить детали и подтвердить время визита.`);
             form.reset();
             // Reset slider to middle
             afterImage.style.width = "50%";

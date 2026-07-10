@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Детейлинг-центр — Премиальный уход за вашим автомобилем</title>
-    <meta name="description" content="Профессиональный детейлинг в Москве. Полировка кузова, нанесение керамики 9H, глубокая химчистка салона и оклейка защитными пленками. Запись онлайн.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Под Крылом — премиальный детейлинг автомобиля</title>
+    <meta name="description" content="Под Крылом — детейлинг-студия в Москве: полировка кузова, керамика 9H, химчистка салона и оклейка защитной пленкой. Запись онлайн.">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -36,7 +31,7 @@
         <section class="hero-section">
             <div class="container hero-container">
                 <div class="hero-info">
-                    <span class="badge">Премиум детейлинг студия</span>
+                    <span class="badge">Премиум-детейлинг студия</span>
                     <h1>Вернем вашему <br>автомобилю блеск автосалона</h1>
                     <p class="hero-desc">Профессиональное восстановление и защита лакокрасочного покрытия. Используем качественные составы, объясняем этапы работ и бережно относимся к каждой детали.</p>
                     
@@ -63,19 +58,19 @@
                         <!-- Name -->
                         <div class="form-group">
                             <label for="userName" class="group-title">Ваше имя</label>
-                            <input type="text" id="userName" name="name" placeholder="Имя владельца" required class="text-input">
+                            <input type="text" id="userName" name="name" placeholder="Имя владельца" required maxlength="60" autocomplete="name" class="text-input">
                         </div>
 
                         <!-- Contact -->
                         <div class="form-group">
                             <label for="userContact" class="group-title">Контактный телефон / Telegram</label>
-                            <input type="text" id="userContact" name="contact" placeholder="+7... или @username" required class="text-input">
+                            <input type="text" id="userContact" name="contact" placeholder="+7... или @username" required maxlength="80" autocomplete="tel" class="text-input">
                         </div>
 
                         <!-- Car Model -->
                         <div class="form-group">
                             <label class="group-title">Марка и модель автомобиля</label>
-                            <input type="text" name="car_model" placeholder="Например: BMW M5 или Geely Monjaro" required class="text-input">
+                            <input type="text" name="car_model" placeholder="Например: BMW M5 или Geely Monjaro" required maxlength="80" autocomplete="off" class="text-input">
                         </div>
 
                         <!-- Service Select -->
