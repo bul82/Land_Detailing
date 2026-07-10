@@ -1,68 +1,44 @@
-/* ==========================================
-   DETAILING LANDING INTERACTION LOGIC (script.js)
-   ========================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Before/After Slider Logic
-    const container = document.getElementById("sliderContainer");
-    const afterImage = document.getElementById("afterImage");
-    const handle = document.getElementById("sliderHandle");
-    let isDragging = false;
+    document.body.classList.add("is-loading");
 
-    // Helper function to update slider position
-    function updateSlider(clientX) {
-        const rect = container.getBoundingClientRect();
-        const offsetX = clientX - rect.left;
-        let percentage = (offsetX / rect.width) * 100;
+    const preloader = document.getElementById("preloader");
+    window.setTimeout(() => {
+        preloader.classList.add("is-hidden");
+        document.body.classList.remove("is-loading");
+    }, 1500);
 
-        // Constrain percentage between 0 and 100
-        if (percentage < 0) percentage = 0;
-        if (percentage > 100) percentage = 100;
+    const cursorDot = document.getElementById("cursorDot");
+    const cursorLabel = document.getElementById("cursorLabel");
+    const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-        // Update DOM elements
-        afterImage.style.width = `${percentage}%`;
-        handle.style.left = `${percentage}%`;
+    if (supportsFinePointer && cursorDot && cursorLabel) {
+        window.addEventListener("mousemove", (event) => {
+            cursorDot.style.left = `${event.clientX}px`;
+            cursorDot.style.top = `${event.clientY}px`;
+            cursorLabel.style.left = `${event.clientX}px`;
+            cursorLabel.style.top = `${event.clientY}px`;
+        });
+
+        document.querySelectorAll(".inspection-area").forEach((area) => {
+            area.addEventListener("mouseenter", () => {
+                cursorDot.classList.add("is-inspecting");
+                cursorLabel.classList.add("is-visible");
+            });
+            area.addEventListener("mouseleave", () => {
+                cursorDot.classList.remove("is-inspecting");
+                cursorLabel.classList.remove("is-visible");
+            });
+        });
+
+        document.querySelectorAll(".service-card").forEach((card) => {
+            card.addEventListener("mouseenter", () => cursorDot.classList.add("is-card"));
+            card.addEventListener("mouseleave", () => cursorDot.classList.remove("is-card"));
+        });
     }
 
-    // Mouse Events
-    handle.addEventListener("mousedown", () => {
-        isDragging = true;
-    });
-
-    window.addEventListener("mouseup", () => {
-        isDragging = false;
-    });
-
-    window.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        updateSlider(e.clientX);
-    });
-
-    // Touch Events (Mobile)
-    handle.addEventListener("touchstart", () => {
-        isDragging = true;
-    });
-
-    window.addEventListener("touchend", () => {
-        isDragging = false;
-    });
-
-    window.addEventListener("touchmove", (e) => {
-        if (!isDragging) return;
-        if (e.touches.length > 0) {
-            updateSlider(e.touches[0].clientX);
-        }
-    });
-
-    // Optional: Click anywhere on container to move slider
-    container.addEventListener("click", (e) => {
-        if (e.target.closest("#sliderHandle")) return; // Prevent double trigger
-        updateSlider(e.clientX);
-    });
-
-
-    // 2. Form Submission Logic
     const form = document.getElementById("detailingForm");
+    if (!form) return;
+
     const submitBtn = form.querySelector(".submit-btn");
     const visitDateInput = form.date;
     const today = new Date();
@@ -73,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return value.length > 0 && value.length <= maxLength;
     }
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
         const name = form.name.value.trim();
         const contact = form.contact.value.trim();
@@ -90,19 +66,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (!date || date < visitDateInput.min) {
-            alert("Выберите актуальную дату визита.");
+            alert("Выберите актуальную дату осмотра.");
             return;
         }
 
-        const message = 
-            `Запись на детейлинг:\n` +
-            `- Услуга: ${serviceText}\n` +
+        const message =
+            `Запись на осмотр покрытия:\n` +
+            `- Что важно сейчас: ${serviceText}\n` +
             `- Автомобиль: ${carModel}\n` +
-            `- Дата визита: ${date} в ${time}`;
+            `- Дата: ${date} в ${time}`;
 
         const originalBtnText = submitBtn.textContent;
         submitBtn.disabled = true;
-        submitBtn.textContent = "Отправка записи...";
+        submitBtn.textContent = "Отправляем...";
 
         fetch("/api/feedback", {
             method: "POST",
@@ -110,30 +86,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: name,
-                contact: contact,
-                message: message,
+                name,
+                contact,
+                message,
                 source: "detailing"
             })
         })
-        .then(res => {
-            if (!res.ok) throw new Error("Server error");
-            return res.json();
-        })
-        .then(data => {
-            alert(`Спасибо, ${name}! Заявка на детейлинг отправлена. Мастер свяжется с вами, чтобы уточнить детали и подтвердить время визита.`);
-            form.reset();
-            // Reset slider to middle
-            afterImage.style.width = "50%";
-            handle.style.left = "50%";
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Произошла ошибка при отправке записи. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.");
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalBtnText;
-        });
+            .then((res) => {
+                if (!res.ok) throw new Error("Server error");
+                return res.json();
+            })
+            .then(() => {
+                alert(`Спасибо, ${name}. Заявка на осмотр отправлена. Свяжемся, чтобы уточнить состояние авто и удобное время.`);
+                form.reset();
+                visitDateInput.min = today.toISOString().slice(0, 10);
+            })
+            .catch((err) => {
+                console.error(err);
+                alert("Не получилось отправить заявку. Попробуйте еще раз или напишите нам напрямую.");
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            });
     });
 });

@@ -3,197 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Под Крылом — премиальный детейлинг автомобиля</title>
-    <meta name="description" content="Под Крылом — детейлинг-студия в Москве: полировка кузова, керамика 9H, химчистка салона и оклейка защитной пленкой. Запись онлайн.">
-    
-    <!-- Styles -->
+    <title>Под Крылом — диагностика покрытия и детейлинг автомобиля</title>
+    <meta name="description" content="Под Крылом — детейлинг-студия в Москве. Сначала смотрим лак, зоны риска и дефекты, потом предлагаем полировку, керамику, PPF или интерьер.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader-car">
+            <svg viewBox="0 0 420 110" role="img" aria-label="Силуэт автомобиля">
+                <path class="car-outline" d="M42 73 C70 48, 98 36, 142 36 L250 36 C289 37, 313 50, 345 72 L382 75" />
+                <path class="car-outline lower" d="M74 78 L335 78" />
+                <circle class="car-wheel" cx="126" cy="79" r="16" />
+                <circle class="car-wheel" cx="294" cy="79" r="16" />
+                <path class="scan-line" d="M56 46 L360 46" />
+                <path class="preloader-mark" d="M228 31 l11 11 m0 -11 l-11 11" />
+            </svg>
+        </div>
+        <p>Проверяем состояние поверхности...</p>
+    </div>
+
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-label" id="cursorLabel" aria-hidden="true">проверить зону</div>
+
     <header class="header">
         <div class="container header-container">
-            <a href="#" class="logo">
-                <span class="logo-icon">🏎️</span>
+            <a href="#" class="logo" aria-label="Под Крылом">
+                <span class="logo-mark">ПК</span>
                 <span class="logo-text"><strong>Под</strong> Крылом</span>
             </a>
             <nav class="nav" aria-label="Основная навигация">
+                <a href="#diagnostics">Диагностика</a>
                 <a href="#services">Услуги</a>
-                <a href="#compare">До/После</a>
-                <a href="#booking">Запись на детейлинг</a>
+                <a href="#process">Процесс</a>
             </nav>
-            <a href="#booking" class="cta-btn-header">Записаться</a>
+            <a href="#booking" class="header-action">Записаться</a>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero-section">
-            <div class="container hero-container">
-                <div class="hero-info">
-                    <span class="badge">Премиум-детейлинг студия</span>
-                    <h1>Вернем вашему <br>автомобилю блеск автосалона</h1>
-                    <p class="hero-desc">Профессиональное восстановление и защита лакокрасочного покрытия. Используем качественные составы, объясняем этапы работ и бережно относимся к каждой детали.</p>
-                    
-                    <div class="features-mini">
-                        <div class="feat-mini-item">
-                            <span class="feat-icon">💎</span>
-                            <span>Керамика Gyeon & Koch</span>
-                        </div>
-                        <div class="feat-mini-item">
-                            <span class="feat-icon">🛡️</span>
-                            <span>Гарантия до 3-х лет</span>
-                        </div>
-                    </div>
-                    <div class="hero-photo">
-                        <img src="assets/images/detailing-premium-hero.jpg" alt="Автомобиль в детейлинг-студии, полировка и материалы для защиты кузова" loading="eager" decoding="async">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <span class="eyebrow">Детейлинг начинается с осмотра</span>
+                    <h1>Сначала карта состояния.<br>Потом полировка, керамика или PPF.</h1>
+                    <p>Мы смотрим на покрытие, зоны риска и дефекты — и только потом предлагаем процедуру.</p>
+                    <div class="hero-actions">
+                        <a href="#booking" class="btn btn-primary">Записаться на осмотр</a>
+                        <a href="#booking" class="btn btn-secondary">Показать фото авто</a>
                     </div>
                 </div>
-
-                <!-- Booking Form -->
-                <div class="calc-card" id="booking">
-                    <h2>Онлайн-запись в студию</h2>
-                    
-                    <form class="calc-form" id="detailingForm">
-                        <!-- Name -->
-                        <div class="form-group">
-                            <label for="userName" class="group-title">Ваше имя</label>
-                            <input type="text" id="userName" name="name" placeholder="Имя владельца" required maxlength="60" autocomplete="name" class="text-input">
-                        </div>
-
-                        <!-- Contact -->
-                        <div class="form-group">
-                            <label for="userContact" class="group-title">Контактный телефон / Telegram</label>
-                            <input type="text" id="userContact" name="contact" placeholder="+7... или @username" required maxlength="80" autocomplete="tel" class="text-input">
-                        </div>
-
-                        <!-- Car Model -->
-                        <div class="form-group">
-                            <label class="group-title">Марка и модель автомобиля</label>
-                            <input type="text" name="car_model" placeholder="Например: BMW M5 или Geely Monjaro" required maxlength="80" autocomplete="off" class="text-input">
-                        </div>
-
-                        <!-- Service Select -->
-                        <div class="form-group">
-                            <label for="serviceType" class="group-title">Выберите услугу</label>
-                            <select id="serviceType" name="service" class="select-input">
-                                <option value="polishing">Детейлинг-полировка кузова</option>
-                                <option value="ceramic">Нанесение керамики 9H (2+1 слоя)</option>
-                                <option value="interior">Глубокая химчистка салона</option>
-                                <option value="ppf">Оклейка антигравийной полиуретановой пленкой</option>
-                                <option value="complex">Комплексный детейлинг (полировка + керамика)</option>
-                            </select>
-                        </div>
-
-                        <!-- Date/Time -->
-                        <div class="form-group">
-                            <label class="group-title">Желаемая дата визита</label>
-                            <div class="input-row">
-                                <input type="date" name="date" required class="text-input">
-                                <select name="time" class="select-input">
-                                    <option value="09:00">09:00 (утро)</option>
-                                    <option value="13:00">13:00 (день)</option>
-                                    <option value="17:00">17:00 (вечер)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Agreement Checkbox -->
-                        <div class="form-agreement">
-                            <input type="checkbox" id="agree" name="agreement" required>
-                            <label for="agree">
-                                Я даю <a href="privacy.html" target="_blank">согласие на обработку персональных данных</a> на условиях политики конфиденциальности.
-                            </label>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Записаться на разбор автомобиля</button>
-                    </form>
-                </div>
+                <figure class="hero-visual inspection-area">
+                    <img src="assets/images/detailing-antigravity-hero.jpg" alt="Светлая детейлинг-студия и автомобиль на осмотре покрытия" loading="eager" decoding="async">
+                    <figcaption>
+                        <span>осмотр ЛКП</span>
+                        <span>световая проверка поверхности</span>
+                    </figcaption>
+                </figure>
             </div>
         </section>
 
-        <!-- Before/After Slider Section -->
-        <section class="compare-section" id="compare">
-            <div class="container">
-                <div class="section-head">
-                    <h2>Результаты нашей работы</h2>
-                    <p>Потяните слайдер по центру, чтобы оценить состояние кузова до полировки и после нанесения защитного состава.</p>
+        <section class="diagnostics-section" id="diagnostics">
+            <div class="container diagnostics-grid">
+                <div class="section-copy">
+                    <span class="section-number">01</span>
+                    <h2>Сначала смотрим на лак</h2>
+                    <p>Мы сначала смотрим на лак, а потом называем услугу.</p>
+                    <ul class="check-list">
+                        <li>царапины и круговые риски;</li>
+                        <li>сколы и зоны риска;</li>
+                        <li>следы прошлой полировки;</li>
+                        <li>состояние лака под светом.</li>
+                    </ul>
                 </div>
-                
-                <div class="slider-wrapper">
-                    <!-- Before/After Container -->
-                    <div class="before-after-container" id="sliderContainer">
-                        <!-- Before Image (Base) -->
-                        <div class="image-box before-image">
-                            <div class="mock-car-bg before-bg">
-                                <div class="car-label before-label">До детейлинга</div>
-                            </div>
+
+                <div class="diagnostic-map inspection-area" aria-label="Карта состояния автомобиля">
+                    <div class="map-paper">
+                        <div class="map-head">
+                            <span>Карта состояния автомобиля</span>
+                            <strong>проверка покрытия</strong>
                         </div>
-                        
-                        <!-- After Image (Overlay) -->
-                        <div class="image-box after-image" id="afterImage">
-                            <div class="mock-car-bg after-bg">
-                                <div class="car-label after-label">После детейлинга</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Handle -->
-                        <div class="slider-handle" id="sliderHandle">
-                            <div class="handle-line"></div>
-                            <div class="handle-button">↔</div>
-                            <div class="handle-line"></div>
-                        </div>
+                        <svg viewBox="0 0 620 340" role="img" aria-label="Схема автомобиля с зонами диагностики">
+                            <path class="car-plan" d="M154 175 C172 98 221 65 310 65 C399 65 448 98 466 175 C454 254 402 289 310 289 C218 289 166 254 154 175 Z" />
+                            <path class="car-plan light" d="M216 113 C245 94 279 86 310 86 C341 86 375 94 404 113" />
+                            <path class="car-plan light" d="M214 238 C244 258 278 267 310 267 C342 267 376 258 406 238" />
+                            <path class="car-plan light" d="M190 142 L430 142" />
+                            <path class="car-plan light" d="M190 209 L430 209" />
+                            <circle class="defect-dot dot-one" cx="236" cy="142" r="7" />
+                            <circle class="defect-dot dot-two" cx="388" cy="210" r="7" />
+                            <path class="risk-line" d="M214 203 C252 188 295 186 348 197" />
+                            <path class="red-mark" d="M392 112 l22 22 m0 -22 l-22 22" />
+                            <path class="red-pencil" d="M432 89 l58 58" />
+                            <path class="red-pencil-tip" d="M486 143 l15 27 l-28 -14 Z" />
+                            <path class="verified" d="M478 231 l16 16 l35 -42" />
+                        </svg>
+                    </div>
+                    <div class="map-note">
+                        <strong>Зона внимания</strong>
+                        <span>Отмечаем дефект, потом выбираем способ работы.</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Grid Section -->
         <section class="services-section" id="services">
             <div class="container">
                 <div class="section-head">
-                    <h2>Детейлинг услуги премиум-класса</h2>
-                    <p>Мы используем только сертифицированную автохимию из Германии, Японии и Кореи.</p>
+                    <span class="section-number">02</span>
+                    <h2>Услуги после диагностики</h2>
+                    <p>Не предлагаем процедуру заранее. Сначала смотрим покрытие и задачу владельца.</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <span class="srv-icon">✨</span>
-                        <h3>Детейлинг-полировка</h3>
-                        <p>Бережное устранение до 95% царапин, паутины и помутнений лака без истончения ЛКП.</p>
-                    </div>
-                    <div class="service-card">
-                        <span class="srv-icon">💎</span>
-                        <h3>Керамика 9H</h3>
-                        <p>Создание гидрофобного панциря. Защита от реагентов, выгорания, птичьего помета и глубокий зеркальный блеск.</p>
-                    </div>
-                    <div class="service-card">
-                        <span class="srv-icon">🧼</span>
-                        <h3>Химчистка салона</h3>
-                        <p>Полная разборка, очистка паром, гипоаллергенные составы Koch Chemie и консервация кожи кремом.</p>
-                    </div>
-                    <div class="service-card">
-                        <span class="srv-icon">🛡️</span>
-                        <h3>Бронепленка (PPF)</h3>
-                        <p>Оклейка зон риска или кузова целиком полиуретаном SunTek / Stek. Надежная защита от сколов и гравия.</p>
-                    </div>
+                    <article class="service-card">
+                        <span class="service-index">01</span>
+                        <h3>Полировка</h3>
+                        <p>Когда нужно восстановить глубину и убрать визуальные дефекты.</p>
+                        <span class="card-arrow">-></span>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-index">02</span>
+                        <h3>Керамика</h3>
+                        <p>Когда покрытие подготовлено и его нужно защитить.</p>
+                        <span class="card-arrow">-></span>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-index">03</span>
+                        <h3>PPF</h3>
+                        <p>Когда нужно защитить зоны риска: капот, бампер, зеркала, пороги.</p>
+                        <span class="card-arrow">-></span>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-index">04</span>
+                        <h3>Интерьер</h3>
+                        <p>Когда важна чистота, материал и аккуратное восстановление салона.</p>
+                        <span class="card-arrow">-></span>
+                    </article>
                 </div>
+            </div>
+        </section>
+
+        <section class="process-section" id="process">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-number">03</span>
+                    <h2>Как проходит работа</h2>
+                </div>
+                <ol class="process-list">
+                    <li><span>Осмотр</span></li>
+                    <li><span>Карта состояния</span></li>
+                    <li><span>План работ</span></li>
+                    <li><span>Процедура</span></li>
+                    <li><span>Рекомендации по уходу</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="booking-section" id="booking">
+            <div class="container booking-grid">
+                <div class="booking-copy">
+                    <span class="section-number">04</span>
+                    <h2>Покажите авто — скажем, с чего начать.</h2>
+                    <p>Опишите машину и задачу. Мы свяжемся, уточним состояние покрытия и предложим первый шаг.</p>
+                </div>
+
+                <form class="booking-form" id="detailingForm">
+                    <div class="form-group">
+                        <label for="userName">Ваше имя</label>
+                        <input type="text" id="userName" name="name" placeholder="Имя владельца" required maxlength="60" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="userContact">Телефон или Telegram</label>
+                        <input type="text" id="userContact" name="contact" placeholder="+7... или @username" required maxlength="80" autocomplete="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="carModel">Марка и модель</label>
+                        <input type="text" id="carModel" name="car_model" placeholder="Например: BMW X5" required maxlength="80" autocomplete="off">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="serviceType">Что важно сейчас</label>
+                            <select id="serviceType" name="service">
+                                <option value="inspection">Осмотр и карта состояния</option>
+                                <option value="polishing">Полировка</option>
+                                <option value="ceramic">Керамика</option>
+                                <option value="ppf">PPF для зон риска</option>
+                                <option value="interior">Интерьер</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="visitDate">Дата</label>
+                            <input type="date" id="visitDate" name="date" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="visitTime">Время</label>
+                        <select id="visitTime" name="time">
+                            <option value="09:00">09:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                    <div class="form-agreement">
+                        <input type="checkbox" id="agree" name="agreement" required>
+                        <label for="agree">Я даю <a href="privacy.html" target="_blank">согласие на обработку персональных данных</a>.</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">Записаться на осмотр</button>
+                </form>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container footer-container">
-            <div class="footer-brand">
-                <span class="logo-icon">🏎️</span>
-                <span><strong>Под</strong> Крылом</span>
-            </div>
-            <p class="footer-copy">&copy; 2026 Под Крылом. Все права защищены. Разработано в рамках портфолио DenVolodins.</p>
-            <a href="privacy.html" class="footer-link" target="_blank">Политика конфиденциальности</a>
+            <div class="footer-brand"><strong>Под</strong> Крылом</div>
+            <p>&copy; 2026 Под Крылом. Диагностика покрытия, карта дефектов и выбор процедуры без лишнего глянца.</p>
+            <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>

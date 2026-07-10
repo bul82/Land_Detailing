@@ -83,7 +83,7 @@ def verify_live_site():
             if response.status != 200:
                 print(f"Live check failed with HTTP status {response.status}.")
                 sys.exit(1)
-            if "Под Крылом" not in body or "detailing-premium-hero.jpg" not in body:
+            if "Под Крылом" not in body or "detailing-antigravity-hero.jpg" not in body:
                 print("Live check failed: expected landing content was not found.")
                 sys.exit(1)
     except Exception as e:
