@@ -120,3 +120,26 @@ document.addEventListener('dragstart', (event) => {
     event.preventDefault();
   }
 });
+
+(() => {
+    const inspectionCard = document.querySelector(".inspection-card");
+    if (!inspectionCard) return;
+
+    inspectionCard.querySelectorAll(".car-pin").forEach((pin) => {
+        pin.addEventListener("mouseenter", () => {
+            inspectionCard.dataset.activeZone = pin.dataset.zone || "";
+        });
+
+        pin.addEventListener("mouseleave", () => {
+            delete inspectionCard.dataset.activeZone;
+        });
+
+        pin.addEventListener("focus", () => {
+            inspectionCard.dataset.activeZone = pin.dataset.zone || "";
+        });
+
+        pin.addEventListener("blur", () => {
+            delete inspectionCard.dataset.activeZone;
+        });
+    });
+})();

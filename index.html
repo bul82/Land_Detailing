@@ -62,129 +62,156 @@
             </div>
         </section>
 
-        <section class="diagnostics-section inspection" id="diagnostics">
-            <div class="inspection__container">
-                <div class="inspection__content">
-                    <span class="inspection__number">01</span>
-                    <h2 class="inspection__title">Сначала проверяем покрытие</h2>
-                    <p class="inspection__description">Осмотр показывает, где достаточно полировки, а где нужна защита или локальная работа.</p>
-                    <ul class="inspection__list">
-                        <li>состояние лака под направленным светом;</li>
-                        <li>сколы и глубокие царапины;</li>
-                        <li>следы прошлой полировки;</li>
-                        <li>зоны риска и разная толщина покрытия.</li>
-                    </ul>
-                </div>
+        <section class="inspection diagnostics-section" id="diagnostics">
+            <div class="inspection__copy">
+                <span class="inspection__index">01</span>
+                <h2 class="inspection__title">Сначала<br>проверяем покрытие</h2>
+                <p class="inspection__lead">Осмотр показывает, где достаточно полировки, а где нужна защита или локальная работа.</p>
 
-                <div class="inspection-map inspection-area">
-                    <div class="inspection-map__header">
-                        <div>
-                            <span class="inspection-map__eyebrow">Карта осмотра</span>
-                            <p class="inspection-map__caption">Первичная диагностика лакокрасочного покрытия</p>
-                        </div>
-                        <span class="inspection-map__status">Осмотр</span>
-                    </div>
+                <ul class="inspection__benefits">
+                    <li>
+                        <span class="inspection__benefit-icon" aria-hidden="true">◌</span>
+                        <span>Состояние лака под профессиональным светом и приборами.</span>
+                    </li>
+                    <li>
+                        <span class="inspection__benefit-icon" aria-hidden="true">⌕</span>
+                        <span>Сколы, царапины, риски и следы прошлой обработки.</span>
+                    </li>
+                    <li>
+                        <span class="inspection__benefit-icon" aria-hidden="true">▱</span>
+                        <span>Толщина покрытия в микронах по каждой зоне.</span>
+                    </li>
+                    <li>
+                        <span class="inspection__benefit-icon" aria-hidden="true">◇</span>
+                        <span>Карта рисков и рекомендации по каждой детали.</span>
+                    </li>
+                </ul>
 
-                    <div class="inspection-map__canvas">
-                        <svg class="inspection-map__svg" viewBox="0 0 760 520" role="img" aria-labelledby="inspection-map-title inspection-map-description">
-                            <title id="inspection-map-title">Диагностическая карта покрытия автомобиля</title>
-                            <desc id="inspection-map-description">Вид автомобиля сверху с четырьмя зонами проверки: сколы спереди, риски на крыше, толщина лакокрасочного покрытия и следы прошлой полировки.</desc>
-
-                            <g class="map-callout-lines">
-                                <path d="M302 118 H207 Q191 118 184 104 L169 78" />
-                                <path d="M393 202 H548 Q564 202 574 188 L591 162" />
-                                <path d="M296 330 H188 Q172 330 163 343 L145 370" />
-                                <path d="M434 390 H558 Q574 390 584 405 L603 432" />
-                            </g>
-
-                            <g class="map-callout-points">
-                                <circle cx="302" cy="118" r="3.5" />
-                                <circle cx="393" cy="202" r="3.5" />
-                                <circle cx="296" cy="330" r="3.5" />
-                                <circle cx="434" cy="390" r="3.5" />
-                            </g>
-
-                            <g class="map-label">
-                                <text class="map-label__number" x="84" y="55">01</text>
-                                <text class="map-label__title" x="84" y="78">сколы спереди</text>
-                            </g>
-                            <g class="map-label">
-                                <text class="map-label__number" x="591" y="135">02</text>
-                                <text class="map-label__title" x="591" y="158">риски на крыше</text>
-                            </g>
-                            <g class="map-label">
-                                <text class="map-label__number" x="66" y="390">03</text>
-                                <text class="map-label__title" x="66" y="413">толщина ЛКП</text>
-                            </g>
-                            <g class="map-label">
-                                <text class="map-label__number" x="603" y="452">04</text>
-                                <text class="map-label__title" x="603" y="475">следы полировки</text>
-                            </g>
-
-                            <g class="inspection-car-outline" transform="translate(255 48)">
-                                <g class="inspection-car-wheels">
-                                    <rect x="-11" y="82" width="16" height="68" rx="6" />
-                                    <rect x="235" y="82" width="16" height="68" rx="6" />
-                                    <rect x="-11" y="290" width="16" height="68" rx="6" />
-                                    <rect x="235" y="290" width="16" height="68" rx="6" />
-                                </g>
-                                <path class="inspection-car-body" d="M115 4 C77 4 52 22 42 56 L22 130 C17 151 14 174 14 197 L14 261 C14 286 18 310 24 333 L42 394 C51 425 76 444 110 450 C124 452 138 452 152 450 C186 444 211 425 220 394 L238 333 C244 310 248 286 248 261 L248 197 C248 174 245 151 240 130 L220 56 C210 22 185 4 147 4 Z" />
-                                <path class="inspection-car-panel" d="M57 73 C75 48 95 39 131 39 C167 39 187 48 205 73 L216 118 C190 105 162 99 131 99 C100 99 72 105 46 118 Z" />
-                                <path class="inspection-car-detail" d="M66 68 C103 82 159 82 196 68" />
-                                <path class="inspection-car-glass" d="M47 132 C72 118 99 112 131 112 C163 112 190 118 215 132 L201 190 C180 179 157 174 131 174 C105 174 82 179 61 190 Z" />
-                                <path class="inspection-car-roof" d="M62 202 C82 190 105 185 131 185 C157 185 180 190 200 202 L200 282 C180 294 157 299 131 299 C105 299 82 294 62 282 Z" />
-                                <path class="inspection-car-glass" d="M61 294 C82 305 105 310 131 310 C157 310 180 305 201 294 L215 343 C190 357 163 363 131 363 C99 363 72 357 47 343 Z" />
-                                <path class="inspection-car-panel" d="M46 357 C72 370 100 376 131 376 C162 376 190 370 216 357 L205 397 C187 420 167 428 131 428 C95 428 75 420 57 397 Z" />
-                                <path class="inspection-car-detail" d="M131 39 V99" />
-                                <path class="inspection-car-detail" d="M131 376 V428" />
-                                <path class="inspection-car-detail" d="M31 157 C43 160 51 164 61 171" />
-                                <path class="inspection-car-detail" d="M231 157 C219 160 211 164 201 171" />
-                                <path class="inspection-car-detail" d="M31 315 C43 312 51 308 61 301" />
-                                <path class="inspection-car-detail" d="M231 315 C219 312 211 308 201 301" />
-                                <path class="inspection-car-detail" d="M26 169 C10 166 3 173 7 184 C14 190 21 190 31 186" />
-                                <path class="inspection-car-detail" d="M236 169 C252 166 259 173 255 184 C248 190 241 190 231 186" />
-
-                                <g class="diagnostic-mark">
-                                    <circle cx="119" cy="65" r="11" />
-                                    <circle cx="119" cy="65" r="3" />
-                                    <path d="M119 48 V43 M119 82 V87 M102 65 H97 M136 65 H141" />
-                                </g>
-
-                                <g class="map-mobile-markers">
-                                    <g transform="translate(89 54)">
-                                        <circle r="13" />
-                                        <text x="0" y="4">01</text>
-                                    </g>
-                                    <g transform="translate(168 235)">
-                                        <circle r="13" />
-                                        <text x="0" y="4">02</text>
-                                    </g>
-                                    <g transform="translate(42 290)">
-                                        <circle r="13" />
-                                        <text x="0" y="4">03</text>
-                                    </g>
-                                    <g transform="translate(178 376)">
-                                        <circle r="13" />
-                                        <text x="0" y="4">04</text>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-
-                    <ol class="inspection-map__legend">
-                        <li><span>01</span><p>Сколы спереди</p></li>
-                        <li><span>02</span><p>Риски на крыше</p></li>
-                        <li><span>03</span><p>Толщина ЛКП</p></li>
-                        <li><span>04</span><p>Следы полировки</p></li>
-                    </ol>
-
-                    <div class="inspection-map__footer">
-                        <span>Осмотр при направленном свете</span>
-                        <span>Без обязательств по услуге</span>
-                    </div>
+                <div class="inspection__result-chip">
+                    <span class="inspection__result-ring" aria-hidden="true"></span>
+                    <p>Точный осмотр —<br>точный <strong>результат.</strong></p>
                 </div>
             </div>
+
+            <article class="inspection-card inspection-area">
+                <header class="inspection-card__header">
+                    <div>
+                        <p class="inspection-card__eyebrow">Карта состояния покрытия</p>
+                        <p class="inspection-card__meta">Осмотр № 0248 · BMW 5 Series · 14.07.2026</p>
+                    </div>
+                    <span class="inspection-card__status">Осмотр завершён</span>
+                </header>
+
+                <div class="inspection-card__map">
+                    <div class="inspection-card__grid" aria-hidden="true"></div>
+
+                    <div class="car-map" role="img" aria-label="Карта состояния кузова автомобиля">
+                        <svg class="car-map__car" viewBox="0 0 320 620" aria-hidden="true">
+                            <g fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M160 20 C105 20 79 44 68 91 L49 197 C44 224 42 254 42 310 C42 366 44 396 49 423 L68 529 C79 576 105 600 160 600 C215 600 241 576 252 529 L271 423 C276 396 278 366 278 310 C278 254 276 224 271 197 L252 91 C241 44 215 20 160 20Z"/>
+                                <path d="M89 113 Q160 78 231 113 L247 181 Q160 145 73 181Z"/>
+                                <path d="M78 200 Q160 162 242 200 L228 279 Q160 251 92 279Z"/>
+                                <path d="M95 294 Q160 268 225 294 L225 410 Q160 438 95 410Z"/>
+                                <path d="M83 430 Q160 462 237 430 L225 510 Q160 544 95 510Z"/>
+                                <path d="M84 523 Q160 554 236 523 L224 570 Q160 590 96 570Z"/>
+                                <path d="M160 22 L160 79 M160 544 L160 599"/>
+                            </g>
+                            <g class="car-map__wheels">
+                                <rect x="25" y="151" width="18" height="72" rx="8"/>
+                                <rect x="277" y="151" width="18" height="72" rx="8"/>
+                                <rect x="25" y="395" width="18" height="72" rx="8"/>
+                                <rect x="277" y="395" width="18" height="72" rx="8"/>
+                            </g>
+                        </svg>
+
+                        <button class="car-pin car-pin--hood is-critical" style="--x:50%;--y:21%" data-zone="hood" aria-label="Капот: сколы, 96 микрон">
+                            <span></span><b>Капот</b>
+                        </button>
+                        <button class="car-pin car-pin--roof is-polish" style="--x:50%;--y:46%" data-zone="roof" aria-label="Крыша: мелкие риски, 110 микрон">
+                            <span></span><b>Крыша</b>
+                        </button>
+                        <button class="car-pin car-pin--left-door is-normal" style="--x:28%;--y:58%" data-zone="leftDoor" aria-label="Левая дверь: покрытие стабильно, 118 микрон">
+                            <span></span><b>Левая дверь</b>
+                        </button>
+                        <button class="car-pin car-pin--right-fender is-careful" style="--x:74%;--y:60%" data-zone="rightFender" aria-label="Правое крыло: следы полировки, 105 микрон">
+                            <span></span><b>Правое крыло</b>
+                        </button>
+                        <button class="car-pin car-pin--trunk is-normal" style="--x:50%;--y:84%" data-zone="trunk" aria-label="Багажник: покрытие стабильно, 113 микрон">
+                            <span></span><b>Багажник</b>
+                        </button>
+                    </div>
+
+                    <div class="map-callout map-callout--hood">
+                        <span class="map-callout__number">01</span>
+                        <strong>Капот</strong>
+                        <em>сколы</em>
+                        <small>96 мкм</small>
+                    </div>
+                    <div class="map-callout map-callout--roof">
+                        <span class="map-callout__number">02</span>
+                        <strong>Крыша</strong>
+                        <em>мелкие риски</em>
+                        <small>110 мкм</small>
+                    </div>
+                    <div class="map-callout map-callout--left-door">
+                        <span class="map-callout__number">03</span>
+                        <strong>Левая дверь</strong>
+                        <em>покрытие стабильно</em>
+                        <small>118 мкм</small>
+                    </div>
+                    <div class="map-callout map-callout--right-fender">
+                        <span class="map-callout__number">04</span>
+                        <strong>Правое крыло</strong>
+                        <em>следы полировки</em>
+                        <small>105 мкм</small>
+                    </div>
+                    <div class="map-callout map-callout--left-fender">
+                        <span class="map-callout__number">05</span>
+                        <strong>Левое крыло</strong>
+                        <em>незначительные риски</em>
+                        <small>104 мкм</small>
+                    </div>
+                    <div class="map-callout map-callout--trunk">
+                        <span class="map-callout__number">06</span>
+                        <strong>Багажник</strong>
+                        <em>покрытие стабильно</em>
+                        <small>113 мкм</small>
+                    </div>
+                </div>
+
+                <div class="inspection-card__bottom">
+                    <div class="inspection-table">
+                        <div class="inspection-table__row inspection-table__head">
+                            <span>Зона</span><span>Состояние</span><span>Толщина</span><span>Рекомендация</span>
+                        </div>
+                        <div class="inspection-table__row">
+                            <span>Капот</span><span><i class="dot dot--critical"></i>сколы</span><span>96 мкм</span><span class="accent">локальная коррекция</span>
+                        </div>
+                        <div class="inspection-table__row">
+                            <span>Крыша</span><span><i class="dot dot--polish"></i>мелкие риски</span><span>110 мкм</span><span>полировка</span>
+                        </div>
+                        <div class="inspection-table__row">
+                            <span>Двери</span><span><i class="dot dot--normal"></i>покрытие стабильно</span><span>118 мкм</span><span>защита</span>
+                        </div>
+                        <div class="inspection-table__row">
+                            <span>Правое крыло</span><span><i class="dot dot--careful"></i>следы полировки</span><span>105 мкм</span><span>щадящий режим</span>
+                        </div>
+                    </div>
+
+                    <aside class="inspection-summary">
+                        <h3>Результат осмотра</h3>
+                        <p>Полировка кузова<br><strong>+ локальная коррекция капота.</strong></p>
+                        <p>Керамическая защита допустима после подготовки.</p>
+                    </aside>
+                </div>
+
+                <footer class="inspection-card__legend">
+                    <span><i class="dot dot--critical"></i>локальная работа</span>
+                    <span><i class="dot dot--careful"></i>щадящий режим</span>
+                    <span><i class="dot dot--polish"></i>полировка</span>
+                    <span><i class="dot dot--normal"></i>покрытие в норме</span>
+                </footer>
+            </article>
         </section>
 
         <section class="services-section" id="services">
