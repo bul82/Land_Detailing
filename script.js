@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.setTimeout(() => {
         preloader.classList.add("is-hidden");
         document.body.classList.remove("is-loading");
-    }, 1500);
+    }, 120);
 
     const cursorDot = document.getElementById("cursorDot");
     const cursorLabel = document.getElementById("cursorLabel");
@@ -110,4 +110,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.textContent = originalBtnText;
             });
     });
+});
+document.querySelectorAll('img').forEach((img) => {
+  img.setAttribute('draggable', 'false');
+});
+
+document.addEventListener('dragstart', (event) => {
+  if (event.target instanceof HTMLImageElement) {
+    event.preventDefault();
+  }
 });
