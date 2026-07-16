@@ -124,22 +124,84 @@ document.addEventListener('dragstart', (event) => {
 (() => {
     const inspectionCard = document.querySelector(".inspection-card");
     if (!inspectionCard) return;
+    const tooltip = inspectionCard.querySelector("#markerTooltip");
+    const scrollHintTarget = inspectionCard;
+
+    function showMarkerDetails(pin) {
+        const zone = pin.dataset.zone || "";
+        inspectionCard.dataset.activeZone = zone;
+        inspectionCard.querySelectorAll(".map-callout.is-active, .inspection-table__row.is-active").forEach((item) => {
+            item.classList.remove("is-active");
+            item.style.backgroundColor = "";
+            item.style.borderColor = "";
+            item.style.boxShadow = "";
+        });
+        const activeCallout = inspectionCard.querySelector(`.map-callout[data-zone="${zone}"]`);
+        const activeRow = inspectionCard.querySelector(`.inspection-table__row[data-zone="${zone}"]`);
+        activeCallout?.classList.add("is-active");
+        activeRow?.classList.add("is-active");
+        if (activeCallout) {
+            activeCallout.style.backgroundColor = "rgba(255, 255, 255, 0.78)";
+            activeCallout.style.borderColor = "rgba(24, 24, 24, 0.12)";
+            activeCallout.style.boxShadow = "0 8px 22px rgba(32, 28, 22, 0.06)";
+        }
+        if (activeRow) {
+            activeRow.style.backgroundColor = "#fff9f4";
+            activeRow.style.boxShadow = "inset 3px 0 0 var(--accent)";
+        }
+
+        if (!tooltip) return;
+
+        tooltip.innerHTML = `
+            <strong>${pin.dataset.title || ""}</strong>
+            <span>${pin.dataset.status || ""} · ${pin.dataset.thickness || ""}</span>
+            <em>${pin.dataset.recommendation || ""}</em>
+        `;
+
+        const mapRect = inspectionCard.querySelector(".inspection-card__map").getBoundingClientRect();
+        const pinRect = pin.getBoundingClientRect();
+        const pinLeft = pinRect.left - mapRect.left;
+        const pinTop = pinRect.top - mapRect.top;
+        const tooltipOffsets = {
+            hood: { x: 38, y: -82 },
+            roof: { x: 42, y: -32 },
+            leftDoor: { x: -220, y: -32 },
+            rightFender: { x: 40, y: -30 },
+            leftFender: { x: -220, y: -28 },
+            trunk: { x: 42, y: -78 }
+        };
+        const offset = tooltipOffsets[zone] || { x: 34, y: -30 };
+        const left = pinLeft + offset.x;
+        const top = pinTop + offset.y;
+
+        tooltip.style.left = `${Math.max(18, Math.min(left, mapRect.width - 230))}px`;
+        tooltip.style.top = `${Math.max(18, Math.min(top, mapRect.height - 112))}px`;
+        tooltip.style.setProperty("opacity", "1", "important");
+        tooltip.classList.add("is-visible");
+    }
+
+    function hideMarkerDetails() {
+        delete inspectionCard.dataset.activeZone;
+        inspectionCard.querySelectorAll(".map-callout.is-active, .inspection-table__row.is-active").forEach((item) => {
+            item.classList.remove("is-active");
+            item.style.backgroundColor = "";
+            item.style.borderColor = "";
+            item.style.boxShadow = "";
+        });
+        if (tooltip) tooltip.style.removeProperty("opacity");
+        tooltip?.classList.remove("is-visible");
+    }
 
     inspectionCard.querySelectorAll(".car-pin").forEach((pin) => {
-        pin.addEventListener("mouseenter", () => {
-            inspectionCard.dataset.activeZone = pin.dataset.zone || "";
-        });
-
-        pin.addEventListener("mouseleave", () => {
-            delete inspectionCard.dataset.activeZone;
-        });
-
-        pin.addEventListener("focus", () => {
-            inspectionCard.dataset.activeZone = pin.dataset.zone || "";
-        });
-
-        pin.addEventListener("blur", () => {
-            delete inspectionCard.dataset.activeZone;
-        });
+        pin.addEventListener("mouseenter", () => showMarkerDetails(pin));
+        pin.addEventListener("mouseleave", hideMarkerDetails);
+        pin.addEventListener("focus", () => showMarkerDetails(pin));
+        pin.addEventListener("blur", hideMarkerDetails);
     });
+
+    scrollHintTarget.addEventListener("scroll", () => {
+        if (scrollHintTarget.scrollLeft > 12) {
+            scrollHintTarget.classList.add("has-scrolled");
+        }
+    }, { passive: true });
 })();

@@ -93,7 +93,7 @@
                 </div>
             </div>
 
-            <article class="inspection-card inspection-area">
+            <article class="inspection-card">
                 <header class="inspection-card__header">
                     <div>
                         <p class="inspection-card__eyebrow">Карта состояния покрытия</p>
@@ -117,65 +117,64 @@
                                 <path d="M160 22 L160 79 M160 544 L160 599"/>
                             </g>
                             <g class="car-map__wheels">
-                                <rect x="25" y="151" width="18" height="72" rx="8"/>
-                                <rect x="277" y="151" width="18" height="72" rx="8"/>
-                                <rect x="25" y="395" width="18" height="72" rx="8"/>
-                                <rect x="277" y="395" width="18" height="72" rx="8"/>
+                                <rect x="19" y="151" width="20" height="76" rx="8"/>
+                                <rect x="281" y="151" width="20" height="76" rx="8"/>
+                                <rect x="19" y="393" width="20" height="76" rx="8"/>
+                                <rect x="281" y="393" width="20" height="76" rx="8"/>
                             </g>
                         </svg>
 
-                        <button class="car-pin car-pin--hood is-critical" style="--x:50%;--y:21%" data-zone="hood" aria-label="Капот: сколы, 96 микрон">
+                        <button class="car-pin car-pin--hood is-critical" style="--x:50%;--y:22%" data-zone="hood" data-title="Капот" data-status="Сколы" data-thickness="96 мкм" data-recommendation="Локальная коррекция" aria-label="Капот: сколы, 96 микрон">
                             <span></span><b>Капот</b>
                         </button>
-                        <button class="car-pin car-pin--roof is-polish" style="--x:50%;--y:46%" data-zone="roof" aria-label="Крыша: мелкие риски, 110 микрон">
+                        <button class="car-pin car-pin--roof is-polish" style="--x:50%;--y:43%" data-zone="roof" data-title="Крыша" data-status="Мелкие риски" data-thickness="110 мкм" data-recommendation="Полировка" aria-label="Крыша: мелкие риски, 110 микрон">
                             <span></span><b>Крыша</b>
                         </button>
-                        <button class="car-pin car-pin--left-door is-normal" style="--x:28%;--y:58%" data-zone="leftDoor" aria-label="Левая дверь: покрытие стабильно, 118 микрон">
+                        <button class="car-pin car-pin--left-door is-normal" style="--x:31%;--y:56%" data-zone="leftDoor" data-title="Левая дверь" data-status="Покрытие стабильно" data-thickness="118 мкм" data-recommendation="Защита" aria-label="Левая дверь: покрытие стабильно, 118 микрон">
                             <span></span><b>Левая дверь</b>
                         </button>
-                        <button class="car-pin car-pin--right-fender is-careful" style="--x:74%;--y:60%" data-zone="rightFender" aria-label="Правое крыло: следы полировки, 105 микрон">
+                        <button class="car-pin car-pin--right-fender is-careful" style="--x:70%;--y:57%" data-zone="rightFender" data-title="Правое крыло" data-status="Следы полировки" data-thickness="105 мкм" data-recommendation="Щадящий режим" aria-label="Правое крыло: следы полировки, 105 микрон">
                             <span></span><b>Правое крыло</b>
                         </button>
-                        <button class="car-pin car-pin--trunk is-normal" style="--x:50%;--y:84%" data-zone="trunk" aria-label="Багажник: покрытие стабильно, 113 микрон">
+                        <button class="car-pin car-pin--left-fender is-polish" style="--x:30%;--y:78%" data-zone="leftFender" data-title="Левое крыло" data-status="Незначительные риски" data-thickness="104 мкм" data-recommendation="Полировка" aria-label="Левое крыло: незначительные риски, 104 микрона">
+                            <span></span><b>Левое крыло</b>
+                        </button>
+                        <button class="car-pin car-pin--trunk is-normal" style="--x:50%;--y:85%" data-zone="trunk" data-title="Багажник" data-status="Покрытие стабильно" data-thickness="113 мкм" data-recommendation="Защита" aria-label="Багажник: покрытие стабильно, 113 микрон">
                             <span></span><b>Багажник</b>
                         </button>
                     </div>
 
-                    <div class="map-callout map-callout--hood">
+                    <div class="marker-tooltip" id="markerTooltip" role="status" aria-live="polite"></div>
+
+                    <div class="map-callout map-callout--hood" data-zone="hood">
                         <span class="map-callout__number">01</span>
                         <strong>Капот</strong>
-                        <em>сколы</em>
-                        <small>96 мкм</small>
+                        <em>Сколы · 96 мкм</em>
                     </div>
-                    <div class="map-callout map-callout--roof">
+                    <div class="map-callout map-callout--roof" data-zone="roof">
                         <span class="map-callout__number">02</span>
                         <strong>Крыша</strong>
-                        <em>мелкие риски</em>
-                        <small>110 мкм</small>
+                        <em>Мелкие риски · 110 мкм</em>
                     </div>
-                    <div class="map-callout map-callout--left-door">
+                    <div class="map-callout map-callout--left-door" data-zone="leftDoor">
                         <span class="map-callout__number">03</span>
                         <strong>Левая дверь</strong>
-                        <em>покрытие стабильно</em>
-                        <small>118 мкм</small>
+                        <em>Покрытие стабильно · 118 мкм</em>
                     </div>
-                    <div class="map-callout map-callout--right-fender">
+                    <div class="map-callout map-callout--right-fender" data-zone="rightFender">
                         <span class="map-callout__number">04</span>
                         <strong>Правое крыло</strong>
-                        <em>следы полировки</em>
-                        <small>105 мкм</small>
+                        <em>Следы полировки · 105 мкм</em>
                     </div>
-                    <div class="map-callout map-callout--left-fender">
+                    <div class="map-callout map-callout--left-fender" data-zone="leftFender">
                         <span class="map-callout__number">05</span>
                         <strong>Левое крыло</strong>
-                        <em>незначительные риски</em>
-                        <small>104 мкм</small>
+                        <em>Незначительные риски · 104 мкм</em>
                     </div>
-                    <div class="map-callout map-callout--trunk">
+                    <div class="map-callout map-callout--trunk" data-zone="trunk">
                         <span class="map-callout__number">06</span>
                         <strong>Багажник</strong>
-                        <em>покрытие стабильно</em>
-                        <small>113 мкм</small>
+                        <em>Покрытие стабильно · 113 мкм</em>
                     </div>
                 </div>
 
@@ -184,17 +183,23 @@
                         <div class="inspection-table__row inspection-table__head">
                             <span>Зона</span><span>Состояние</span><span>Толщина</span><span>Рекомендация</span>
                         </div>
-                        <div class="inspection-table__row">
+                        <div class="inspection-table__row" data-zone="hood">
                             <span>Капот</span><span><i class="dot dot--critical"></i>сколы</span><span>96 мкм</span><span class="accent">локальная коррекция</span>
                         </div>
-                        <div class="inspection-table__row">
+                        <div class="inspection-table__row" data-zone="roof">
                             <span>Крыша</span><span><i class="dot dot--polish"></i>мелкие риски</span><span>110 мкм</span><span>полировка</span>
                         </div>
-                        <div class="inspection-table__row">
+                        <div class="inspection-table__row" data-zone="leftDoor">
                             <span>Двери</span><span><i class="dot dot--normal"></i>покрытие стабильно</span><span>118 мкм</span><span>защита</span>
                         </div>
-                        <div class="inspection-table__row">
+                        <div class="inspection-table__row" data-zone="rightFender">
                             <span>Правое крыло</span><span><i class="dot dot--careful"></i>следы полировки</span><span>105 мкм</span><span>щадящий режим</span>
+                        </div>
+                        <div class="inspection-table__row" data-zone="leftFender">
+                            <span>Левое крыло</span><span><i class="dot dot--polish"></i>незначительные риски</span><span>104 мкм</span><span>полировка</span>
+                        </div>
+                        <div class="inspection-table__row" data-zone="trunk">
+                            <span>Багажник</span><span><i class="dot dot--normal"></i>покрытие стабильно</span><span>113 мкм</span><span>защита</span>
                         </div>
                     </div>
 

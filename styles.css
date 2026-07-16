@@ -1854,3 +1854,264 @@ select:focus {
         margin-top: 36px;
     }
 }
+
+/* Diagnostic map refinement */
+.inspection {
+    grid-template-columns: minmax(280px, 0.66fr) minmax(760px, 1.58fr);
+}
+
+.inspection__title {
+    font-size: clamp(40px, 4.25vw, 65px);
+}
+
+.inspection__lead {
+    margin-top: 34px;
+    margin-bottom: 34px;
+}
+
+.inspection__benefits li {
+    padding: 14px 0;
+}
+
+.inspection-card {
+    padding: 30px;
+}
+
+.inspection-card__map {
+    min-height: 505px;
+}
+
+.car-map {
+    top: 30px;
+    width: 318px;
+    height: 432px;
+}
+
+.car-map__car g[stroke] {
+    stroke-width: 1.8;
+}
+
+.car-map__wheels rect {
+    width: 19px;
+    height: 76px;
+    rx: 8px;
+}
+
+.car-pin {
+    width: 18px;
+    height: 18px;
+    z-index: 4;
+}
+
+.car-pin span {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 9px rgba(28, 26, 23, 0.18);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.car-pin:hover span,
+.car-pin:focus-visible span {
+    transform: scale(1.25);
+    box-shadow: 0 3px 12px rgba(28, 26, 23, 0.22);
+}
+
+.map-callout {
+    width: 180px;
+    padding: 8px 9px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: #2f2f2d;
+    transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.map-callout::after {
+    top: 38px;
+    height: 1px;
+    background: #9f9c95;
+    opacity: 0.86;
+}
+
+.map-callout__number {
+    margin-bottom: 7px;
+    color: #77736d;
+    font-size: 0.68rem;
+}
+
+.map-callout strong {
+    font-size: 0.78rem;
+    font-weight: 780;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.map-callout em {
+    position: relative;
+    margin-top: 7px;
+    padding-left: 13px;
+    color: #4c4945;
+    font-size: 0.76rem;
+    line-height: 1.25;
+}
+
+.map-callout em::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.46em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--callout-status, #555);
+}
+
+.map-callout--hood { --callout-status: var(--accent); left: 0; top: 62px; }
+.map-callout--hood::after { left: 118px; width: 235px; transform: rotate(12deg); transform-origin: left; }
+.map-callout--roof { --callout-status: var(--polish); right: 0; top: 84px; }
+.map-callout--roof::after { right: 128px; width: 178px; transform: rotate(-15deg); transform-origin: right; }
+.map-callout--left-door { --callout-status: var(--normal); left: 0; top: 222px; }
+.map-callout--left-door::after { left: 138px; width: 155px; }
+.map-callout--right-fender { --callout-status: var(--careful); right: 0; top: 224px; }
+.map-callout--right-fender::after { right: 132px; width: 145px; }
+.map-callout--left-fender { --callout-status: var(--polish); left: 0; top: 365px; }
+.map-callout--left-fender::after { left: 136px; width: 148px; transform: rotate(-14deg); transform-origin: left; }
+.map-callout--trunk { --callout-status: var(--normal); right: 0; top: 365px; }
+.map-callout--trunk::after { right: 130px; width: 155px; transform: rotate(14deg); transform-origin: right; }
+
+.inspection-table__row {
+    transition: background 180ms ease, box-shadow 180ms ease;
+}
+
+.inspection-card[data-active-zone="hood"] [data-zone="hood"],
+.inspection-card[data-active-zone="roof"] [data-zone="roof"],
+.inspection-card[data-active-zone="leftDoor"] [data-zone="leftDoor"],
+.inspection-card[data-active-zone="rightFender"] [data-zone="rightFender"],
+.inspection-card[data-active-zone="leftFender"] [data-zone="leftFender"],
+.inspection-card[data-active-zone="trunk"] [data-zone="trunk"],
+.map-callout.is-active {
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(24, 24, 24, 0.10);
+}
+
+.inspection-card[data-active-zone="hood"] .inspection-table__row[data-zone="hood"],
+.inspection-card[data-active-zone="roof"] .inspection-table__row[data-zone="roof"],
+.inspection-card[data-active-zone="leftDoor"] .inspection-table__row[data-zone="leftDoor"],
+.inspection-card[data-active-zone="rightFender"] .inspection-table__row[data-zone="rightFender"],
+.inspection-card[data-active-zone="leftFender"] .inspection-table__row[data-zone="leftFender"],
+.inspection-card[data-active-zone="trunk"] .inspection-table__row[data-zone="trunk"],
+.inspection-table__row.is-active {
+    background: #fff9f4;
+    box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.marker-tooltip {
+    position: absolute;
+    z-index: 8;
+    min-width: 170px;
+    max-width: 210px;
+    padding: 11px 12px;
+    border: 1px solid rgba(24, 24, 24, 0.10);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 14px 36px rgba(32, 28, 22, 0.11);
+    color: var(--ink);
+    opacity: 0;
+    pointer-events: none;
+    transform: none;
+    transition: opacity 150ms ease;
+}
+
+.marker-tooltip.is-visible,
+.inspection-card[data-active-zone] .marker-tooltip {
+    opacity: 1;
+}
+
+.marker-tooltip strong,
+.marker-tooltip span {
+    display: block;
+}
+
+.marker-tooltip strong {
+    margin-bottom: 5px;
+    font-size: 0.82rem;
+}
+
+.marker-tooltip span {
+    color: #56524d;
+    font-size: 0.75rem;
+    line-height: 1.35;
+}
+
+.marker-tooltip em {
+    display: block;
+    margin-top: 7px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.inspection-card__bottom {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.inspection-table__row {
+    padding: 10px 12px;
+}
+
+.inspection-summary {
+    padding: 18px;
+}
+
+.inspection-summary h3 {
+    margin-bottom: 24px;
+}
+
+@media (max-width: 1180px) {
+    .inspection-card__map,
+    .inspection-card__bottom,
+    .inspection-card__legend,
+    .inspection-card__header {
+        min-width: 850px;
+    }
+
+    .inspection-card::after {
+        content: "Проведите в сторону, чтобы посмотреть всю карту";
+        position: sticky;
+        left: 0;
+        display: block;
+        width: max-content;
+        margin-top: 12px;
+        padding: 8px 10px;
+        border: 1px solid rgba(24, 24, 24, 0.09);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.86);
+        color: #68645e;
+        font-size: 0.72rem;
+        opacity: 1;
+        transition: opacity 180ms ease;
+    }
+
+    .inspection-card.has-scrolled::after {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .inspection__title {
+        font-size: 42px;
+    }
+
+    .inspection__lead {
+        margin-top: 28px;
+    }
+}
+
+@media (max-width: 1180px) {
+    .inspection {
+        grid-template-columns: 1fr;
+    }
+}
